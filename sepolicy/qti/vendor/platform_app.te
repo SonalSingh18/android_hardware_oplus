@@ -16,9 +16,17 @@ allow platform_app vendor_camera_data_file:dir getattr;
 
 allow platform_app vendor_file:file { read open getattr map execute };
 
+allow platform_app vendor_hal_orms_hwservice:hwservice_manager find;
+
+allow platform_app vendor_persist_camera_file:dir search;
+
 allow platform_app vendor_sysfs_kgsl:file r_file_perms;
 
 allow platform_app vendor_xdsp_device:chr_file r_file_perms;
+
+allow platform_app hal_dms_hwservice:hwservice_manager find;
+
+allow platform_app vendor_sysfs_msm_subsys:dir search;
 
 rw_dir_file(platform_app, vendor_sysfs_battery_supply)
 
@@ -28,3 +36,8 @@ allow platform_app selinuxfs:file r_file_perms;
 
 # allow platform_app access to hal service
 hal_client_domain(platform_app, vendor_hal_dspmanager);
+
+# OPlusExtras
+r_dir_file(platform_app, sysfs_dm)
+
+r_dir_file(platform_app, vendor_sysfs_sde_crtc)
