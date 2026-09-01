@@ -12,7 +12,7 @@ allow platform_app_36 adsprpcd_file:file r_file_perms;
 
 allow platform_app_36 oem_service:service_manager find;
 
-allow platform_app_36 public_adsprpcd_file:file r_file_perms;
+allow platform_app_36 same_process_hal_file:file r_file_perms;
 
 allow platform_app_36 vendor_camera_data_file:dir getattr;
 
