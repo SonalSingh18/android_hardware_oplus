@@ -11,7 +11,6 @@ allow platform_app_36 vendor_sysfs_msm_subsys:dir search;
 typeattribute platform_app_36 hal_camera_client;
 
 allow platform_app_36 adsprpcd_file:dir r_dir_perms;
-allow platform_app_36 adsprpcd_file:file r_file_perms;
 
 allow platform_app_36 oem_service:service_manager find;
 
