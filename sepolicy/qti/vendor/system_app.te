@@ -9,7 +9,13 @@ rw_dir_file(system_app, vendor_sysfs_graphics)
 r_dir_file(system_app, vendor_sysfs_sde_crtc)
 
 # Led / Vibrator
-rw_dir_file(system_app, sysfs_leds)
+# /sys/class/leds only holds the class symlinks; the attribute files live under
+# /sys/devices/... and carry sysfs_vibrator (see genfs_contexts). Platform
+# policy reserves sysfs_leds:file for vendor domains (neverallow in
+# system/sepolicy/private/coredomain.te), so keep this to directory listing and
+# symlink traversal and let the sysfs_vibrator rules below do the I/O.
+allow system_app sysfs_leds:dir r_dir_perms;
+allow system_app sysfs_leds:lnk_file read;
 
 # Touchpanel
 rw_dir_file(system_app, vendor_proc_display)
